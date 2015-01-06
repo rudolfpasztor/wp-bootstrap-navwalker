@@ -59,6 +59,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'menu-item-' . $item->ID;
+			$idoutput =  $item->object_id;
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
@@ -79,6 +80,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
 			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
+			$atts['data-postid'] = ! empty( $idoutput )		? $idoutput	: '';
 
 			// If item has_children add atts to a.
 			if ( $args->has_children && $depth === 0 ) {
